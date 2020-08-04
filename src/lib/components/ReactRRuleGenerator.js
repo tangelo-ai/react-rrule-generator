@@ -88,19 +88,16 @@ class ReactRRuleGenerator extends PureComponent {
               </div>
             )
           }
-          {
-            !options.hideRepeat && (
               <div>
+              {!options.hideRepeat && (
                 <Repeat
                   id={`${id}-repeat`}
                   repeat={repeat}
                   handleChange={this.handleChange}
                   translations={this.props.translations}
                 />
+              )}
               </div>
-            )
-          }
-
           {
             !options.hideEnd && (
               <div>
