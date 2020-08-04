@@ -88,15 +88,18 @@ class ReactRRuleGenerator extends PureComponent {
               </div>
             )
           }
-
-          <div>
-            <Repeat
-              id={`${id}-repeat`}
-              repeat={repeat}
-              handleChange={this.handleChange}
-              translations={this.props.translations}
-            />
-          </div>
+          {
+            !options.hideRepeat && (
+              <div>
+                <Repeat
+                  id={`${id}-repeat`}
+                  repeat={repeat}
+                  handleChange={this.handleChange}
+                  translations={this.props.translations}
+                />
+              </div>
+            )
+          }
 
           {
             !options.hideEnd && (
@@ -126,6 +129,7 @@ ReactRRuleGenerator.propTypes = {
     monthly: PropTypes.oneOf(['on', 'on the']),
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
     hideStart: PropTypes.bool,
+    hideRepeat: PropTypes.bool,
     hideEnd: PropTypes.bool,
     hideError: PropTypes.bool,
     weekStartsOnSunday: PropTypes.bool,

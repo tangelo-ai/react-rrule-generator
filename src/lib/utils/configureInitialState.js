@@ -94,6 +94,7 @@ const configureState = (config = {}, calendarComponent, id) => {
     },
     options: {
       hideStart: configureHideStart(),
+      hideRepeat: config.hideRepeat,
       hideEnd: config.hideEnd,
       hideError: config.hideError,
       weekStartsOnSunday: config.weekStartsOnSunday,

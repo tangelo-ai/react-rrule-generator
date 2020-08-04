@@ -108,6 +108,7 @@ class ControlledRender extends Component {
 | **end** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
 | **hideStart** | `boolean` | If `true` start date form is not rendered. Default: `true` |
 | **hideEnd** | `boolean` | If `true` ending form is not rendered. Default: `false` |
+| **hideRepeat** | `boolean` | If `true` ending form is not rendered. Default: `false` |
 | **hideError** | `boolean` | If `true` error alert is not rendered. Default: `false` |
 | **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). Default: `false` |
 
