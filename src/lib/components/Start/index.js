@@ -4,24 +4,12 @@ import StartOnDate from './OnDate';
 
 import translateLabel from '../../utils/translateLabel';
 
-const Start = ({
-  id,
-  start: {
-    onDate,
-  },
-  handleChange,
-  translations
-}) => (
+const Start = ({ id, start: { onDate }, handleChange, translations }) => (
   <div className="px-3">
     <div className="form-group row">
       <div className="col-sm-2 text-sm-right">
-        <label
-          htmlFor={id}
-          className="col-form-label"
-        >
-          <strong>
-            {translateLabel(translations, 'start.label')}
-          </strong>
+        <label htmlFor={id} className="col-form-label">
+          <strong>{translateLabel(translations, 'start.label')}</strong>
         </label>
       </div>
       <StartOnDate id={id} onDate={onDate} handleChange={handleChange} translations={translations} />

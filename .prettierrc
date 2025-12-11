@@ -1,0 +1,17 @@
+{
+  "semi": true,
+  "arrowParens": "always",
+  "singleQuote": true,
+  "printWidth": 120,
+  "trailingComma": "all",
+  "importOrder": [
+    "^react",
+    "^(?!((./|../|App.css|assets/|components/|constants/|contexts/|graphql/|utils/)))",
+    "^@",
+    "^(assets/|components/|constants/|contexts/|graphql/|utils/)",
+    "^(./|../)",
+    "\\.(c|le|sc)ss$"
+  ],
+  "importOrderSeparation": true,
+  "experimentalBabelParserPluginsList": ["jsx", "typescript"]
+}

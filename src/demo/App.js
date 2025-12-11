@@ -13,7 +13,7 @@ class App extends Component {
     language: 'en',
   };
 
-  getTranslation = () => (this.state.language === 'de') ? translations.german : undefined;
+  getTranslation = () => (this.state.language === 'de' ? translations.german : undefined);
 
   handleChangeLanguage = (event) => {
     event.persist();
@@ -36,9 +36,7 @@ class App extends Component {
       <div>
         <div className="app-navbar">
           <a href="https://github.com/fafruch/react-rrule-generator">
-            &lt; go back to
-            {' '}
-            <img className="app-navbar-ghlogo" src={githubLogo} alt="Github logo" />
+            &lt; go back to <img className="app-navbar-ghlogo" src={githubLogo} alt="Github logo" />
             /fafruch
           </a>
 
@@ -55,18 +53,19 @@ class App extends Component {
           <h1>React RRule Generator</h1>
         </div>
 
-        <div className="app-desc">
-          Recurrence rules generator form built with React
-        </div>
+        <div className="app-desc">Recurrence rules generator form built with React</div>
 
         <div className="app container">
-          <h5><strong>{'<RRuleGenerator />'}</strong></h5>
+          <h5>
+            <strong>{'<RRuleGenerator />'}</strong>
+          </h5>
 
           <ReactRRuleGenerator
             onChange={this.handleChange}
             value={this.state.rrule}
             config={{
               hideStart: false,
+              hideCalendar: true,
             }}
             translations={this.getTranslation()}
           />
@@ -75,16 +74,15 @@ class App extends Component {
         <hr className="mt-5 mb-5" />
 
         <div className="container">
-          <h5><strong>Example handling</strong></h5>
+          <h5>
+            <strong>Example handling</strong>
+          </h5>
 
           <div className="px-3 pt-3 border rounded">
             <div className="form-group row d-flex align-items-sm-center">
-
               <div className="col-sm-2 text-sm-right">
                 <span className="col-form-label">
-                  <strong>
-                    RRule
-                  </strong>
+                  <strong>RRule</strong>
                 </span>
               </div>
 
@@ -97,10 +95,7 @@ class App extends Component {
               </div>
 
               <div className="col-sm-2">
-                <CopyToClipboard
-                  text={rrule}
-                  onCopy={this.handleCopy}
-                >
+                <CopyToClipboard text={rrule} onCopy={this.handleCopy}>
                   <button
                     aria-label="Copy generated RRule"
                     className={`btn ${isCopied ? 'btn-secondary' : 'btn-primary'} float-right`}
@@ -109,7 +104,6 @@ class App extends Component {
                   </button>
                 </CopyToClipboard>
               </div>
-
             </div>
           </div>
         </div>
@@ -117,14 +111,14 @@ class App extends Component {
         <hr className="mt-5 mb-5" />
 
         <div className="container mb-5">
-          <h5><strong>Config</strong></h5>
+          <h5>
+            <strong>Config</strong>
+          </h5>
           <div className="px-3 pt-3 border rounded">
             <div className="form-group row d-flex align-items-sm-center">
               <div className="col-sm-2 text-sm-right">
                 <span className="col-form-label">
-                  <strong>
-                    Language
-                  </strong>
+                  <strong>Language</strong>
                 </span>
               </div>
 

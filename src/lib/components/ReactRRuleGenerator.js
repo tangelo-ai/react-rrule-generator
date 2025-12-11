@@ -14,17 +14,15 @@ import '../styles/index.css';
 
 class ReactRRuleGenerator extends PureComponent {
   // compute default view based on user's config
-  state = configureInitialState(
-    this.props.config,
-    this.props.calendarComponent,
-    this.props.id,
-  );
+  state = configureInitialState(this.props.config, this.props.calendarComponent, this.props.id);
 
   componentWillMount() {
     if (this.props.onChange === ReactRRuleGenerator.defaultProps.onChange) {
       // no onChange() was provided
-      throw new Error('No onChange() function has been passed to RRuleGenerator. \n' +
-        'Please provide one, it\'s needed to handle generated value.');
+      throw new Error(
+        'No onChange() function has been passed to RRuleGenerator. \n' +
+          "Please provide one, it's needed to handle generated value.",
+      );
     }
 
     if (this.props.value) {
@@ -53,67 +51,49 @@ class ReactRRuleGenerator extends PureComponent {
   render() {
     const {
       id,
-      data: {
-        start,
-        repeat,
-        end,
-        options,
-        error,
-      },
+      data: { start, repeat, end, options, error },
     } = this.state;
 
     return (
       <div>
-
-        {
-          !options.hideError && error && (
-            <div className="alert alert-danger">
-              {translateLabel(this.props.translations, 'invalid_rrule', { value: error.value })}
-            </div>
-          )
-        }
+        {!options.hideError && error && (
+          <div className="alert alert-danger">
+            {translateLabel(this.props.translations, 'invalid_rrule', {
+              value: error.value,
+            })}
+          </div>
+        )}
 
         <div className="px-0 pt-3 border rounded">
-
-          {
-            !options.hideStart && (
+          {!options.hideStart && (
+            <div>
+              <Start
+                id={`${id}-start`}
+                start={start}
+                handleChange={this.handleChange}
+                translations={this.props.translations}
+              />
+              <hr />
+            </div>
+          )}
+          <div>
+            {!options.hideRepeat && (
               <div>
-                <Start
-                  id={`${id}-start`}
-                  start={start}
+                <Repeat
+                  id={`${id}-repeat`}
+                  repeat={repeat}
                   handleChange={this.handleChange}
                   translations={this.props.translations}
                 />
                 <hr />
               </div>
-            )
-          }
-              <div>
-              {!options.hideRepeat && (
-                <div>
-                  <Repeat
-                    id={`${id}-repeat`}
-                    repeat={repeat}
-                    handleChange={this.handleChange}
-                    translations={this.props.translations}
-                  />
-                  <hr />                
-                </div>
-              )}
-              </div>
-          {
-            !options.hideEnd && (
-              <div>
-                <End
-                  id={`${id}-end`}
-                  end={end}
-                  handleChange={this.handleChange}
-                  translations={this.props.translations}
-                />
-              </div>
-            )
-          }
-
+            )}
+          </div>
+          {!options.hideEnd && (
+            <div>
+              <End id={`${id}-end`} end={end} handleChange={this.handleChange} translations={this.props.translations} />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -131,7 +111,13 @@ ReactRRuleGenerator.propTypes = {
     hideRepeat: PropTypes.bool,
     hideEnd: PropTypes.bool,
     hideError: PropTypes.bool,
+    hideTime: PropTypes.bool,
+    hideTimezone: PropTypes.bool,
+    hideCalendar: PropTypes.bool,
     weekStartsOnSunday: PropTypes.bool,
+    defaultTime: PropTypes.string,
+    defaultTimezone: PropTypes.string,
+    timeStep: PropTypes.number,
   }),
   value: PropTypes.string,
   onChange: PropTypes.func,

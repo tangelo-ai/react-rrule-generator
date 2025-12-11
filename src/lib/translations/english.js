@@ -46,6 +46,8 @@ export default {
   start: {
     label: 'Start',
     tooltip: 'Datetime picker for start on date',
+    time_tooltip: 'Time selector for start time',
+    timezone_tooltip: 'Timezone selector',
   },
   repeat: {
     label: 'Repeat',
@@ -86,4 +88,4 @@ export default {
     on_date: 'On date',
     executions: 'executions.',
   },
-}
+};
