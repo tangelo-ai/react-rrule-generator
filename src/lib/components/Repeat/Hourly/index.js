@@ -3,31 +3,21 @@ import PropTypes from 'prop-types';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 import translateLabel from '../../../utils/translateLabel';
 
-const RepeatHourly = ({
-  id,
-  hourly: {
-    interval,
-  },
-  handleChange,
-  translations
-}) => (
+const RepeatHourly = ({ id, hourly: { interval }, handleChange, translations }) => (
   <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
-      {translateLabel(translations, 'repeat.hourly.every')}
-    </div>
+    <div className="col-sm-1 offset-sm-2">{translateLabel(translations, 'repeat.hourly.every')}</div>
     <div className="col-sm-2">
       <input
+        min="1"
         id={`${id}-interval`}
         name="repeat.hourly.interval"
         aria-label="Repeat hourly interval"
         className="form-control"
         value={interval}
-        onChange={numericalFieldHandler(handleChange)}
+        onChange={numericalFieldHandler(handleChange, 1)}
       />
     </div>
-    <div className="col-sm-1">
-      {translateLabel(translations, 'repeat.hourly.hours')}
-    </div>
+    <div className="col-sm-1">{translateLabel(translations, 'repeat.hourly.hours')}</div>
   </div>
 );
 RepeatHourly.propTypes = {

@@ -4,16 +4,7 @@ import { toPairs } from 'lodash';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 import translateLabel from '../../../utils/translateLabel';
 
-const RepeatWeekly = ({
-  id,
-  weekly: {
-    interval,
-    days,
-    options,
-  },
-  handleChange,
-  translations
-}) => {
+const RepeatWeekly = ({ id, weekly: { interval, days, options }, handleChange, translations }) => {
   let daysArray = toPairs(days);
   if (options.weekStartsOnSunday) {
     daysArray = daysArray.slice(-1).concat(daysArray.slice(0, -1));
@@ -22,22 +13,19 @@ const RepeatWeekly = ({
   return (
     <div className="px-3">
       <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
-          {translateLabel(translations, 'repeat.weekly.every')}
-        </div>
+        <div className="col-sm-1 offset-sm-2">{translateLabel(translations, 'repeat.weekly.every')}</div>
         <div className="col-sm-3">
           <input
+            min="1"
             id={`${id}-interval`}
             name="repeat.weekly.interval"
             aria-label="Repeat weekly interval"
             className="form-control"
             value={interval}
-            onChange={numericalFieldHandler(handleChange)}
+            onChange={numericalFieldHandler(handleChange, 1)}
           />
         </div>
-        <div className="col-sm-1">
-          {translateLabel(translations, 'repeat.weekly.weeks')}
-        </div>
+        <div className="col-sm-1">{translateLabel(translations, 'repeat.weekly.weeks')}</div>
       </div>
 
       <div className="form-group row">
@@ -68,8 +56,8 @@ const RepeatWeekly = ({
                 }}
               />
               {translateLabel(translations, `days_short.${dayName.toLowerCase()}`)}
-            </label>))
-          }
+            </label>
+          ))}
         </div>
       </div>
     </div>

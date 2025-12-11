@@ -5,40 +5,26 @@ import RepeatMonthlyOnThe from './OnThe';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 import translateLabel from '../../../utils/translateLabel';
 
-const RepeatMonthly = ({
-  id,
-  monthly: {
-    mode,
-    interval,
-    on,
-    onThe,
-    options,
-  },
-  handleChange,
-  translations
-}) => {
-  const isTheOnlyOneMode = option => options.modes === option;
-  const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
+const RepeatMonthly = ({ id, monthly: { mode, interval, on, onThe, options }, handleChange, translations }) => {
+  const isTheOnlyOneMode = (option) => options.modes === option;
+  const isOptionAvailable = (option) => !options.modes || isTheOnlyOneMode(option);
 
   return (
     <div>
       <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
-          {translateLabel(translations, 'repeat.monthly.every')}
-        </div>
+        <div className="col-sm-1 offset-sm-2">{translateLabel(translations, 'repeat.monthly.every')}</div>
         <div className="col-sm-3">
           <input
+            min="1"
             id={`${id}-interval`}
             name="repeat.monthly.interval"
             aria-label="Repeat monthly interval"
             className="form-control"
             value={interval}
-            onChange={numericalFieldHandler(handleChange)}
+            onChange={numericalFieldHandler(handleChange, 1)}
           />
         </div>
-        <div className="col-sm-1">
-          {translateLabel(translations, 'repeat.monthly.months')}
-        </div>
+        <div className="col-sm-1">{translateLabel(translations, 'repeat.monthly.months')}</div>
       </div>
 
       {isOptionAvailable('on') && (
@@ -61,7 +47,6 @@ const RepeatMonthly = ({
           translations={translations}
         />
       )}
-
     </div>
   );
 };
