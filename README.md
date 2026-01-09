@@ -114,3 +114,12 @@ class ControlledRender extends Component {
 
 ## License 
 MIT
+
+
+## Follow next steps to run Demo locally
+
+- Switch to working node version: `nvm use 14.18.1`
+- Install packages: `npm install --ignore-scripts`
+- Install newer node-sass version: `npm install node-sass@latest`
+- Start the demo server: `npm start`
+- After testing your changes, remove any undesired package-lock.json change
